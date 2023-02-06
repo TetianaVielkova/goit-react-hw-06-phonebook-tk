@@ -4,14 +4,15 @@ import { useDispatch, useSelector} from 'react-redux';
 import { deleteContactsAction } from 'redux/Contacts/contacts.slice';
 
 
+
 export const ContactList = () => {
-    const contacts = useSelector(state => state.contacts)
-    const filter = useSelector(state => state.filters)
+    const contacts = useSelector(state => state.contacts);
+    const filter = useSelector(state => state.filters);
     const dispatch = useDispatch(deleteContactsAction);
 
     const filteredContacts = contacts.filter(({ name }) =>
     name.toLowerCase().includes(filter.toLowerCase())
-  );
+    );
 
     return(
         <List>

@@ -3,11 +3,11 @@ import { contactsFilterAction } from './../../redux/Contacts/contacts.slice';
 import {Input, Label} from './Filter.styled'
 
 export const Filter = () => {
-    const filters = useSelector((state) => state.contacts.filter);
+    const filter = useSelector((state) => state.contacts.filter);
     const dispatch = useDispatch();
 
     const handelFilterContact = filters => {
-        dispatch(contactsFilterAction(filters));
+        dispatch(contactsFilterAction(filter));
     }
     
     return(
@@ -17,7 +17,6 @@ export const Filter = () => {
                 autoComplete="off"
                 type="text"
                 name="filter"
-                value={filters}
                 onChange={(event) => handelFilterContact(event.target.value)}
                 />
             </Label>
