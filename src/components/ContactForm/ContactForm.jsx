@@ -9,7 +9,7 @@ export const ContactForm = () => {
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
     const dispatch = useDispatch();
-    const contacts = useSelector((state) => state.contacts.contacts);
+    const contacts = useSelector((state) => state.contacts);
 
     const handleChangeName = event => {
         setName(event.target.value);
@@ -21,14 +21,15 @@ export const ContactForm = () => {
     const handelSubmit = event => {
         event.preventDefault();
         
-        const contact = {name, number, id: nanoid()};
-        const nameInArray =  contacts.map(contacts  => contacts.name);
-        if (nameInArray.includes(nameInArray.name)) {
+        const nameInArray =  contacts.find(
+            contacts  => contacts.name.toLowerCase() === name.toLowerCase()
+          );
+        if (nameInArray) {
             alert(`${name} is already in contacts `)
             return
-        } else {
+        } 
+        const contact = {name, number, id: nanoid()};
             dispatch(addNewContactsAction(contact));
-        }
         
         setName('');
         setNumber('');
