@@ -21,7 +21,7 @@ export const ContactForm = () => {
     const handelSubmit = event => {
         event.preventDefault();
         
-        const nameInArray =  contacts.map(
+        const nameInArray =  contacts.find(
             contacts  => contacts.name.toLowerCase() === name.toLowerCase()
           );
         if (nameInArray) {
